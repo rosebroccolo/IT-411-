@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <title>Project 8</title>
+    <meta charset=utf-8>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="/resources/demos/external/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link href="stylesheet.css" rel="stylesheet">
+    <script src="BMICalcHelper.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $("#calc").submit(function (e) {
+                e.preventDefault();
+                var height = Number($("#height").val());
+                var weight = Number($("#weight").val());
+                $("#BMIImperial").text(calcImperialBMI(height, weight));
+            });
+
+            $("#calcMetric").submit(function (e) {
+                e.preventDefault();
+                var height2 = Number($("#height2").val());
+                var weight2 = Number($("#weight2").val());
+                $("#BMIMetric").text(calcMetricBMI(height2, weight2));
+            });
+
+            $(function () {
+                var spinner = $("#height").spinner();
+
+                $("#getvalue").on("click", function () {
+                    return(spinner.spinner("value"));
+                });
+
+                $("button").button();
+            });
+        });
+        $(function() {
+
+            $('#calc').validate();
+
+            $('#calc').submit(function(e){
+                e.preventDefault(); //Prevents from submitting (which is the default action)
+
+                // if the form is not valid don't do anything else but return
+                if (!$("#calc").valid()) return;
+
+                // if you get here the form is valid so do other stuff
+            });
+        }); // end ready
+
+            $(document).ready(function(){
+            $( "#tabs" ).tabs();
+
+
+            $("#calcMetric").submit(function(e){
+            e.preventDefault();
+
+
+        });
+
+        })
+
+    </script>
+</head>
+<body>
+<a href="../home.html"><img src= "images/sftwear.png" alt=""></a>
+<h2>Rose Broccolo</h2>
+<h3>IT 411</h3>
+<h3>Project 8</h3>
+<p><a href="../home.html">Home</a></p>
+<h1>BMI CALCULATOR</h1>
+
+<!--bootstrap grid-->
+<div class="container-fluid">
+        <div class="col-1">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Imperial</a></li>
+                    <li><a href="#tabs-2">Metric</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <form id="calc">
+                        <label for="height" class="label">Enter your height in IN</label>
+                        <input type="text" name="height" id="height" class="required digits" title="height is required">
+                        <br>
+                        <label for="weight" class="label">Enter your weight in LB</label>
+                        <input type="text" name="weight" id="weight" class="required digits" title="weight is required">
+                        <button type="submit">Calc BMI</button>
+                    </form>
+                </div>
+                <div id="tabs-2">
+                    <form id="calcMetric">
+                        <label for="height2" class="label">Enter your height in CM</label>
+                        <input type="text" name="height2" id="height2" class="required digits" title="height is required">
+                        <br>
+                        <label for="weight2" class="label">Enter your weight in KG</label>
+                        <input type="text" name="weight2" id="weight2" class="required digits" title="weight is required">
+
+                        <button type="submit">Calc BMI</button>
+                    </form>
+                </div>
+            </div>
+            <p id="BMIImperial"></p>
+            <p id="BMIMetric"></p>
+        </div>
+        <div class="col-2">
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"> BMI</th>
+                    <th scope="col">class</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Less than 18.5</th>
+                    <td>underweight</td>
+                </tr>
+                <tr>
+                    <th scope="row">18.5-24.9</th>
+                    <td>normal weight</td>
+                </tr>
+                <tr>
+                    <th scope="row">25-29.9</th>
+                    <td>overweight</td>
+                </tr>
+                <tr>
+                    <th scope="row">30-34.9</th>
+                    <td>Obesity Class I</td>
+                </tr>
+                <tr>
+                    <th scope="row">30-34.9</th>
+                    <td>Obesity Class I</td>
+                </tr>
+                <tr>
+                    <th scope="row">35-39.9</th>
+                    <td>Obesity Class II</td>
+                </tr>
+                <tr>
+                    <th scope="row">40 and above</th>
+                    <td>Obesity Class III</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
